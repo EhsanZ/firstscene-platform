@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم القارئ/الناقد - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">لوحة تحكم القارئ/الناقد</h2>
+            </div>
+
+            <div class="dashboard-nav">
+                <a href="#available" class="active" onclick="showSection('available')">أعمال متاحة للقراءة</a>
+                <a href="#reading" onclick="showSection('reading')">أعمال أقرأها</a>
+                <a href="#reviewed" onclick="showSection('reviewed')">مراجعاتي</a>
+            </div>
+
+            <!-- Available Works Section -->
+            <div id="available-section" class="dashboard-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-accepted">متاح للقراءة</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> محمد أحمد</p>
+                    <p><strong>النوع:</strong> رواية</p>
+                    <p><strong>عدد الصفحات:</strong> ٢٥٠</p>
+                    <p><strong>الوصف:</strong> رواية اجتماعية تتناول قضايا معاصرة...</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="requestAccess(1)">طلب الإذن بالقراءة</button>
+                        <button class="btn-secondary" onclick="viewPreview(1)">معاينة</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">مجموعة قصصية "أصوات المدينة"</h4>
+                        <span class="status-badge status-accepted">متاح للقراءة</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> فاطمة علي</p>
+                    <p><strong>النوع:</strong> مجموعة قصصية</p>
+                    <p><strong>عدد القصص:</strong> ١٢</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="requestAccess(2)">طلب الإذن بالقراءة</button>
+                        <button class="btn-secondary" onclick="viewPreview(2)">معاينة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading Section -->
+            <div id="reading-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-review">قيد القراءة</span>
+                    </div>
+                    <p>تم الموافقة على طلبك. يمكنك الآن قراءة العمل.</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="readWork(1)">قراءة العمل</button>
+                        <button class="btn-secondary" onclick="writeReview(1)">كتابة مراجعة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviewed Section -->
+            <div id="reviewed-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الخريف الأخير"</h4>
+                        <span class="status-badge status-accepted">تمت المراجعة</span>
+                    </div>
+                    <p><strong>التقييم:</strong> ٨/١٠</p>
+                    <p><strong>تاريخ المراجعة:</strong> ٢٠٢٤/٠٣/١٠</p>
+                    <button class="btn-secondary" onclick="viewMyReview(1)">عرض المراجعة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Writing Modal -->
+    <div id="reviewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 800px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>كتابة مراجعة</h2>
+            <form data-form-type="reader-review">
+                <div class="form-group">
+                    <label>العمل: رواية "الليل الطويل"</label>
+                </div>
+
+                <div class="rating-input">
+                    <label>التقييم العام:</label>
+                    <input type="number" name="rating" min="1" max="10" value="7" required>
+                    <span>/ ١٠</span>
+                </div>
+
+                <div class="form-group">
+                    <label>المراجعة</label>
+                    <textarea name="review" rows="10" required placeholder="اكتب مراجعتك الجادة هنا..."></textarea>
+                    <small style="color: #666;">ملاحظة: المراجعة الجادة مطلوبة للحصول على مادة القراءة المجانية</small>
+                </div>
+
+                <div class="form-group">
+                    <label>نقاط القوة</label>
+                    <textarea name="strengths" rows="4" placeholder="ما الذي أعجبك في العمل؟"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>نقاط التحسين</label>
+                    <textarea name="improvements" rows="4" placeholder="ما الذي يمكن تحسينه؟"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">إرسال المراجعة</button>
+                    <button type="button" class="btn-secondary" onclick="hideReviewModal()" style="flex: 1;">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function requestAccess(id) {
+            if (confirm('هل تريد طلب الإذن بقراءة هذا العمل؟ سيتم إرسال الطلب إلى الكاتب.')) {
+                alert('تم إرسال طلب الإذن. سيتم إشعارك عند الموافقة.');
+            }
+        }
+
+        function viewPreview(id) {
+            alert('معاينة العمل ' + id);
+        }
+
+        function readWork(id) {
+            alert('فتح قارئ النص للعمل ' + id);
+        }
+
+        function writeReview(id) {
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+
+        function hideReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        function viewMyReview(id) {
+            alert('عرض المراجعة ' + id);
+        }
+
+        document.querySelector('#reviewModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال المراجعة بنجاح. شكراً لمساهمتك!');
+            hideReviewModal();
+        });
+    </script>
+</body>
+</html>

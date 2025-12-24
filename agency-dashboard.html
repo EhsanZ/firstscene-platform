@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الوكالة الأدبية - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+            </div>
+
+            <div class="dashboard-nav">
+                <a href="#pending" class="active" onclick="showSection('pending')">أعمال قيد المراجعة</a>
+                <a href="#active" onclick="showSection('active')">أعمال نشطة</a>
+                <a href="#rejected" onclick="showSection('rejected')">مرفوضة</a>
+                <a href="#published" onclick="showSection('published')">منشورة</a>
+            </div>
+
+            <!-- Pending Section -->
+            <div id="pending-section" class="dashboard-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل" - كاتب: محمد أحمد</h4>
+                        <span class="status-badge status-new">جديد</span>
+                    </div>
+                    <p><strong>المرحلة:</strong> إعادة الكتابة والمراجعة والتحرير</p>
+                    <p><strong>حالة التواصل:</strong> جاري تقييم النص/الكاتب</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="book.html" class="btn-primary">عرض النص</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">مجموعة قصصية "أصوات المدينة" - كاتب: فاطمة علي</h4>
+                        <span class="status-badge status-review">تم التواصل المبدئي</span>
+                    </div>
+                    <p><strong>المرحلة:</strong> قبل الكتابة (بناء الفكرة والتخطيط)</p>
+                    <p><strong>حالة التواصل:</strong> جديد</p>
+                    <div style="margin-top: 1rem;">
+                        <a href="book.html" class="btn-primary">عرض النص</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Section -->
+            <div id="active-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الخريف الأخير" - كاتب: خالد سعيد</h4>
+                        <span class="status-badge status-accepted">تم توقيع العقد</span>
+                    </div>
+                    <p><strong>المرحلة:</strong> التحرير النهائي وإعداد العمل للنشر</p>
+                    <p><strong>حالة التواصل:</strong> تم توقيع العقد</p>
+                </div>
+            </div>
+
+            <!-- Rejected Section -->
+            <div id="rejected-section" class="dashboard-section" style="display: none;">
+                <p>لا توجد أعمال مرفوضة حالياً</p>
+            </div>
+
+            <!-- Published Section -->
+            <div id="published-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الضوء والظل" - كاتب: نورا حسن</h4>
+                        <span class="status-badge status-published">تم النشر</span>
+                    </div>
+                    <p><strong>دار النشر:</strong> دار النشر العربية</p>
+                    <p><strong>تاريخ النشر:</strong> ٢٠٢٤/٠٣/١٥</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 800px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>تقييم العمل</h2>
+            <form data-form-type="agency-review">
+                <div class="form-group">
+                    <label>تحديد المرحلة الحالية من رحلة الكاتب</label>
+                    <select name="writerStage" required>
+                        <option value="">اختر المرحلة</option>
+                        <option value="planning">قبل الكتابة (بناء الفكرة والتخطيط)</option>
+                        <option value="first-draft">المسودة الأولى</option>
+                        <option value="revision">إعادة الكتابة والمراجعة والتحرير</option>
+                        <option value="final-edit">التحرير النهائي وإعداد العمل للنشر</option>
+                        <option value="negotiation">التفاوض مع دور النشر</option>
+                        <option value="post-publish">ما بعد النشر</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تحديد حالة التواصل حول النص</label>
+                    <select name="communicationStatus" required>
+                        <option value="">اختر الحالة</option>
+                        <option value="new">جديد</option>
+                        <option value="initial-contact">تم التواصل المبدئي</option>
+                        <option value="evaluating">جاري تقييم النص/الكاتب</option>
+                        <option value="accepted-conditions">تم تقييم النص وقبوله بشروط</option>
+                        <option value="accepted-no-conditions">تم تقييم النص وقبوله بدون شروط</option>
+                        <option value="rejected">تم تقييم النص ورفضه</option>
+                        <option value="waiting-writer">انتظار رد من الكاتب</option>
+                        <option value="signed">تم توقيع العقد</option>
+                        <option value="ready">جاهز للنشر</option>
+                        <option value="published">تم النشر</option>
+                    </select>
+                </div>
+
+                <div class="review-form">
+                    <div class="rating-input">
+                        <label>التقييم العام:</label>
+                        <input type="number" name="overallRating" min="1" max="10" value="7" required>
+                        <span>/ ١٠</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>توصيات عامة</label>
+                        <textarea name="generalRecommendations" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>الملاحظات الأسلوبية والبلاغية</label>
+                        <textarea name="styleNotes" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>الملاحظات الدلالية</label>
+                        <textarea name="semanticNotes" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>الملاحظات السردية</label>
+                        <textarea name="narrativeNotes" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>كتب نوصي بها في علوم اللغة العربية</label>
+                        <textarea name="languageBooks" rows="3" placeholder="اكتب أسماء الكتب، كل كتاب في سطر"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>كتب تراثية مرجعية لصقل اللغة الفصحى</label>
+                        <textarea name="heritageBooks" rows="3" placeholder="اكتب أسماء الكتب، كل كتاب في سطر"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>كتب جيدة مشابهة لما يحاول الكاتب إنجازه</label>
+                        <textarea name="similarBooks" rows="3" placeholder="اكتب أسماء الكتب، كل كتاب في سطر"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>تمارين كتابية</label>
+                        <textarea name="writingExercises" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>أهداف المرحلة التالية من مسيرة الكاتب في الكتابة</label>
+                        <textarea name="nextStageGoals" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="createContract"> إنشاء عقد إلكتروني مع الكاتب
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="rejectWriter"> رفض التعامل مع الكاتب
+                    </label>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">حفظ التقييم</button>
+                    <button type="button" class="btn-secondary" onclick="hideReviewModal()" style="flex: 1;">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        let currentWorkId = null;
+
+        function showSection(section) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function reviewWork(id) {
+            currentWorkId = id;
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+
+        function hideReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        function viewWork(id) {
+            alert('عرض النص الكامل للعمل ' + id);
+        }
+
+        document.querySelector('#reviewModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم حفظ التقييم بنجاح');
+            hideReviewModal();
+        });
+    </script>
+</body>
+</html>

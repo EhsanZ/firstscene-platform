@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>المشهد الأول</h1>
+                    <p class="tagline">نجعل من الكتابة مهنةً أقل وحدة</p>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="register.html">إنشاء حساب</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">تسجيل الدخول</h2>
+                <form data-form-type="login">
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">نوع الحساب</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">اختر نوع الحساب</option>
+                            <option value="writer">كاتب</option>
+                            <!-- <option value="agency">وكالة أدبية</option> -->
+                            <option value="publisher">دار نشر</option>
+                            <option value="reader">قارئ/ناقد</option>
+                            <option value="editor">محرر مستقل</option>
+                        </select>
+                    </div>
+                    <a href="agency-dashboard.html" class="btn-primary btn-large" style="width: 100%;">تسجيل الدخول كموظف في المشهد الأوّل</a>
+                </br></br>
+                    <a href="writer-dashboard.html" class="btn-primary btn-large" style="width: 100%;">تسجيل الدخول ككاتب</a>
+                </br></br>
+                    <a href="publisher-dashboard.html" class="btn-primary btn-large" style="width: 100%;">تسجيل الدخول كدار نشر</a>
+                </br></br>
+                    <a href="reader-dashboard.html" class="btn-primary btn-large" style="width: 100%;">تسجيل الدخول كقارئ/ناقد</a>
+                </br></br>
+                    <a href="editor-dashboard.html" class="btn-primary btn-large" style="width: 100%;">تسجيل الدخول كمحرر مستقل</a>
+                </form>
+                <p style="text-align: center; margin-top: 1.5rem;">
+                    ليس لديك حساب؟ <a href="register.html">إنشاء حساب جديد</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userType = document.getElementById('userType').value;
+            if (userType) {
+                // Redirect to appropriate dashboard
+                const dashboards = {
+                    'writer': 'writer-dashboard.html',
+                    'agency': 'agency-dashboard.html',
+                    'publisher': 'publisher-dashboard.html',
+                    'reader': 'reader-dashboard.html',
+                    'editor': 'editor-dashboard.html'
+                };
+                window.location.href = dashboards[userType] || 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>

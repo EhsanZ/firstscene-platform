@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المحرر المستقل - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">لوحة تحكم المحرر المستقل</h2>
+            </div>
+
+            <div class="dashboard-nav">
+                <a href="#available" class="active" onclick="showSection('available')">أعمال متاحة للتحرير</a>
+                <a href="#my-offers" onclick="showSection('my-offers')">عروضي</a>
+                <a href="#active" onclick="showSection('active')">أعمال قيد التحرير</a>
+                <a href="#completed" onclick="showSection('completed')">أعمال مكتملة</a>
+            </div>
+
+            <!-- Available Works Section -->
+            <div id="available-section" class="dashboard-section">
+                <p style="margin-bottom: 1.5rem; color: #666;">اختر الأعمال التي تريد تحريرها وعرض المبلغ المطلوب</p>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-accepted">متاح للتحرير</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> محمد أحمد</p>
+                    <p><strong>الوكالة:</strong> المشهد الأول</p>
+                    <p><strong>عدد الصفحات:</strong> ٢٥٠</p>
+                    <p><strong>المرحلة:</strong> إعادة الكتابة والمراجعة والتحرير</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="makeOffer(1)">تقديم عرض</button>
+                        <button class="btn-secondary" onclick="viewWorkDetails(1)">عرض التفاصيل</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">مجموعة قصصية "أصوات المدينة"</h4>
+                        <span class="status-badge status-accepted">متاح للتحرير</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> فاطمة علي</p>
+                    <p><strong>عدد القصص:</strong> ١٢</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="makeOffer(2)">تقديم عرض</button>
+                        <button class="btn-secondary" onclick="viewWorkDetails(2)">عرض التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Offers Section -->
+            <div id="my-offers-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-review">في انتظار الرد</span>
+                    </div>
+                    <p><strong>المبلغ المقترح:</strong> ٥٠٠٠ ريال</p>
+                    <p><strong>الخدمات:</strong> تحرير شامل ومراجعة لغوية</p>
+                    <p><strong>تاريخ العرض:</strong> ٢٠٢٤/٠٣/١٢</p>
+                </div>
+            </div>
+
+            <!-- Active Works Section -->
+            <div id="active-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الخريف الأخير"</h4>
+                        <span class="status-badge status-review">قيد التحرير</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> خالد سعيد</p>
+                    <p><strong>المبلغ المتفق عليه:</strong> ٦٠٠٠ ريال</p>
+                    <p><strong>حالة التحرير:</strong> جاري العمل على الفصل الثالث</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="manageEditingTasks(1)">إدارة مهام التحرير</button>
+                        <button class="btn-secondary" onclick="uploadEditedVersion(1)">رفع نسخة محررة</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Section -->
+            <div id="completed-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الضوء والظل"</h4>
+                        <span class="status-badge status-published">مكتمل</span>
+                    </div>
+                    <p><strong>تاريخ الإكمال:</strong> ٢٠٢٤/٠٢/٢٨</p>
+                    <p><strong>المبلغ المستلم:</strong> ٥٥٠٠ ريال</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Modal -->
+    <div id="offerModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 700px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>تقديم عرض تحرير</h2>
+            <form data-form-type="editor-offer">
+                <div class="form-group">
+                    <label>العمل: رواية "الليل الطويل"</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="offerAmount">المبلغ المطلوب (ريال)</label>
+                    <input type="number" id="offerAmount" name="offerAmount" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="services">الخدمات المقدمة</label>
+                    <textarea id="services" name="services" rows="4" required placeholder="وصف الخدمات التي ستقدمها (تحرير شامل، مراجعة لغوية، إلخ)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">الجدول الزمني المتوقع</label>
+                    <input type="text" id="timeline" name="timeline" placeholder="مثال: ٣ أسابيع" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">ملاحظات إضافية</label>
+                    <textarea id="notes" name="notes" rows="3"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">إرسال العرض</button>
+                    <button type="button" class="btn-secondary" onclick="hideOfferModal()" style="flex: 1;">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Editing Tasks Modal -->
+    <div id="tasksModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 800px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>إدارة مهام التحرير</h2>
+            <div class="card" style="box-shadow: none; padding: 0;">
+                <h3>رواية "الخريف الأخير"</h3>
+                <div style="margin-top: 1.5rem;">
+                    <h4>المهام</h4>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> مراجعة الفصل الأول
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checked> مراجعة الفصل الثاني
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox"> مراجعة الفصل الثالث (جاري)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox"> مراجعة الفصل الرابع
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox"> المراجعة اللغوية النهائية
+                        </label>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn-primary" onclick="hideTasksModal()">حفظ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        let currentWorkId = null;
+
+        function showSection(section) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function makeOffer(id) {
+            currentWorkId = id;
+            document.getElementById('offerModal').style.display = 'flex';
+        }
+
+        function hideOfferModal() {
+            document.getElementById('offerModal').style.display = 'none';
+        }
+
+        function viewWorkDetails(id) {
+            alert('عرض تفاصيل العمل ' + id);
+        }
+
+        function manageEditingTasks(id) {
+            document.getElementById('tasksModal').style.display = 'flex';
+        }
+
+        function hideTasksModal() {
+            document.getElementById('tasksModal').style.display = 'none';
+        }
+
+        function uploadEditedVersion(id) {
+            alert('رفع نسخة محررة للعمل ' + id);
+        }
+
+        document.querySelector('#offerModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم إرسال العرض بنجاح. سيتم إشعارك عند الرد.');
+            hideOfferModal();
+        });
+    </script>
+</body>
+</html>

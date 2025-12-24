@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الكاتب - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <button class="btn-primary" onclick="showNewWorkModal()">إضافة عمل جديد</button>
+            </div>
+
+            <div class="dashboard-nav">
+                <a href="#works" class="active" onclick="showSection('works')">أعمالي</a>
+                <a href="#reviews" onclick="showSection('reviews')">المراجعات</a>
+                <a href="#agency" onclick="showSection('agency')">الوكالة الأدبية</a>
+                <a href="#publishers" onclick="showSection('publishers')">دور النشر</a>
+                <a href="#editors" onclick="showSection('editors')">المحررون</a>
+            </div>
+
+            <!-- Works Section -->
+            <div id="works-section" class="dashboard-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-review">جاري تقييم النص</span>
+                    </div>
+                    <div class="workflow-stages">
+                        <div class="workflow-stage completed">قبل الكتابة</div>
+                        <div class="workflow-stage completed">المسودة الأولى</div>
+                        <div class="workflow-stage active">المراجعة والتحرير</div>
+                        <div class="workflow-stage">التحرير النهائي</div>
+                        <div class="workflow-stage">التفاوض مع دور النشر</div>
+                        <div class="workflow-stage">ما بعد النشر</div>
+                    </div>
+                    <p style="margin-top: 1rem;"><strong>حالة التواصل:</strong> تم تقييم النص وقبوله بشروط</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-secondary" onclick="viewWorkDetails(1)">عرض التفاصيل</button>
+                        <button class="btn-secondary" onclick="uploadDocument(1)">رفع مستند</button>
+                        <button class="btn-secondary" onclick="makeAvailableToReaders(1)">إتاحة للقراء</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">مجموعة قصصية "أصوات المدينة"</h4>
+                        <span class="status-badge status-new">جديد</span>
+                    </div>
+                    <p>تم رفع المخطط الأولي، في انتظار مراجعة الوكالة</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-secondary" onclick="viewWorkDetails(2)">عرض التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div id="reviews-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <h4>رواية "الليل الطويل"</h4>
+                    <div class="review-item">
+                        <p><strong>قارئ: أحمد محمد</strong></p>
+                        <p>التقييم: ٨/١٠</p>
+                        <p>مراجعة شاملة ومفيدة حول البنية السردية والشخصيات...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agency Section -->
+            <div id="agency-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <h4>رواية "الليل الطويل"</h4>
+                    <div class="review-form">
+                        <div class="rating-input">
+                            <label>التقييم العام:</label>
+                            <input type="number" min="1" max="10" value="7" readonly>
+                            <span>/ ١٠</span>
+                        </div>
+                        <div class="form-group">
+                            <label>التوصيات العامة:</label>
+                            <p>العمل يحتاج إلى مزيد من التطوير في البنية السردية...</p>
+                        </div>
+                        <div class="form-group">
+                            <label>الملاحظات الأسلوبية:</label>
+                            <p>بعض الجمل تحتاج إلى مراجعة لغوية...</p>
+                        </div>
+                        <div class="form-group">
+                            <label>الكتب المقترحة:</label>
+                            <ul>
+                                <li>كتاب في علوم اللغة العربية</li>
+                                <li>كتب تراثية مرجعية</li>
+                                <li>أعمال مشابهة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label>ملاحظاتك:</label>
+                        <textarea rows="4" placeholder="اكتب ملاحظاتك على تقييم الوكالة..."></textarea>
+                        <button class="btn-primary" style="margin-top: 0.5rem;">إرسال الملاحظات</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publishers Section -->
+            <div id="publishers-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>دار النشر العربية</h4>
+                        <span class="status-badge status-review">مهتم</span>
+                    </div>
+                    <p>أبدت دار النشر العربية اهتمامها بعملك "الليل الطويل"</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">عرض التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Editors Section -->
+            <div id="editors-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>محرر: سارة أحمد</h4>
+                        <span class="status-badge status-new">عرض جديد</span>
+                    </div>
+                    <p><strong>العمل:</strong> رواية "الليل الطويل"</p>
+                    <p><strong>المبلغ المقترح:</strong> ٥٠٠٠ ريال</p>
+                    <p><strong>الخدمات:</strong> تحرير شامل ومراجعة لغوية</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary">قبول العرض</button>
+                        <button class="btn-secondary">رفض</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Work Modal -->
+    <div id="newWorkModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 700px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>إضافة عمل جديد</h2>
+            <form data-form-type="new-work">
+                <div class="form-group">
+                    <label for="workTitle">عنوان العمل</label>
+                    <input type="text" id="workTitle" name="workTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="workType">نوع العمل</label>
+                    <select id="workType" name="workType" required>
+                        <option value="">اختر نوع العمل</option>
+                        <option value="novel">رواية</option>
+                        <option value="short-stories">مجموعة قصصية</option>
+                        <option value="poetry">ديوان شعر</option>
+                        <option value="non-fiction">غير روائي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workStage">المرحلة الحالية</label>
+                    <select id="workStage" name="workStage" required>
+                        <option value="planning">قبل الكتابة (بناء الفكرة والتخطيط)</option>
+                        <option value="first-draft">المسودة الأولى</option>
+                        <option value="revision">إعادة الكتابة والمراجعة والتحرير</option>
+                        <option value="final-edit">التحرير النهائي وإعداد العمل للنشر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workDescription">وصف العمل</label>
+                    <textarea id="workDescription" name="workDescription" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>رفع المستند</label>
+                    <div class="file-upload-area">
+                        <p>اضغط لاختيار ملف أو اسحب الملف هنا</p>
+                        <input type="file" accept=".doc,.docx,.pdf,.txt">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">إضافة العمل</button>
+                    <button type="button" class="btn-secondary" onclick="hideNewWorkModal()" style="flex: 1;">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function showNewWorkModal() {
+            document.getElementById('newWorkModal').style.display = 'flex';
+        }
+
+        function hideNewWorkModal() {
+            document.getElementById('newWorkModal').style.display = 'none';
+        }
+
+        function viewWorkDetails(id) {
+            alert('عرض تفاصيل العمل ' + id);
+        }
+
+        function uploadDocument(id) {
+            alert('رفع مستند للعمل ' + id);
+        }
+
+        function makeAvailableToReaders(id) {
+            if (confirm('هل تريد إتاحة هذا العمل للقراء المراجعين؟')) {
+                alert('تم إتاحة العمل للقراء');
+            }
+        }
+    </script>
+</body>
+</html>

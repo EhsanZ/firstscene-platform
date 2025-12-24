@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>المشهد الأول</h1>
+                    <p class="tagline">نجعل من الكتابة مهنةً أقل وحدة</p>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">إنشاء حساب جديد</h2>
+                <form data-form-type="register">
+                    <div class="form-group">
+                        <label for="userType">نوع الحساب</label>
+                        <select id="userType" name="userType" required onchange="toggleFields()">
+                            <option value="">اختر نوع الحساب</option>
+                            <option value="writer">كاتب</option>
+                            <!-- <option value="agency">وكالة أدبية</option> -->
+                            <option value="publisher">دار نشر</option>
+                            <option value="reader">قارئ/ناقد</option>
+                            <option value="editor">محرر مستقل</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group" id="agencyNameGroup" style="display: none;">
+                        <label for="agencyName">اسم الوكالة الأدبية</label>
+                        <input type="text" id="agencyName" name="agencyName">
+                    </div>
+                    
+                    <div class="form-group" id="publisherNameGroup" style="display: none;">
+                        <label for="publisherName">اسم دار النشر</label>
+                        <input type="text" id="publisherName" name="publisherName">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="password" name="password" required minlength="8">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">تأكيد كلمة المرور</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    
+                    <div class="form-group" id="bioGroup">
+                        <label for="bio">نبذة عنك</label>
+                        <textarea id="bio" name="bio" rows="4"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary btn-large" style="width: 100%;">إنشاء الحساب</button>
+                </form>
+                <p style="text-align: center; margin-top: 1.5rem;">
+                    لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleFields() {
+            const userType = document.getElementById('userType').value;
+            document.getElementById('agencyNameGroup').style.display = userType === 'agency' ? 'block' : 'none';
+            document.getElementById('publisherNameGroup').style.display = userType === 'publisher' ? 'block' : 'none';
+        }
+        
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('كلمات المرور غير متطابقة');
+                return;
+            }
+            
+            const userType = document.getElementById('userType').value;
+            if (userType) {
+                alert('تم إنشاء الحساب بنجاح! سيتم توجيهك إلى صفحة تسجيل الدخول.');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

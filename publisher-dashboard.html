@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم دار النشر - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">لوحة تحكم دار النشر</h2>
+            </div>
+
+            <div class="dashboard-nav">
+                <a href="#browse" class="active" onclick="showSection('browse')">تصفح الأعمال</a>
+                <a href="#interested" onclick="showSection('interested')">أعمال مهتم بها</a>
+                <a href="#negotiating" onclick="showSection('negotiating')">قيد التفاوض</a>
+                <a href="#contracted" onclick="showSection('contracted')">معقود عليها</a>
+            </div>
+
+            <!-- Browse Section -->
+            <div id="browse-section" class="dashboard-section">
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <input type="text" placeholder="بحث في الأعمال..." style="width: 100%; padding: 1rem;">
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-accepted">قابل للنشر</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> محمد أحمد</p>
+                    <p><strong>الوكالة الأدبية:</strong> المشهد الأول</p>
+                    <p><strong>عدد القراء المراجعين:</strong> ١٥</p>
+                    <p><strong>التقييم المتوسط:</strong> ٧.٥/١٠</p>
+                    <p><strong>الفئة العمرية المهتمة:</strong> ٢٥-٤٠ سنة</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="showInterest(1)">إبداء الاهتمام</button>
+                        <button class="btn-secondary" onclick="viewWorkDetails(1)">عرض التفاصيل</button>
+                        <button class="btn-secondary" onclick="viewImpressions(1)">عرض الانطباعات</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">مجموعة قصصية "أصوات المدينة"</h4>
+                        <span class="status-badge status-accepted">قابل للنشر</span>
+                    </div>
+                    <p><strong>الكاتب:</strong> فاطمة علي</p>
+                    <p><strong>الوكالة الأدبية:</strong> المشهد الأول</p>
+                    <p><strong>عدد القراء المراجعين:</strong> ٨</p>
+                    <p><strong>التقييم المتوسط:</strong> ٨/١٠</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn-primary" onclick="showInterest(2)">إبداء الاهتمام</button>
+                        <button class="btn-secondary" onclick="viewWorkDetails(2)">عرض التفاصيل</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interested Section -->
+            <div id="interested-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الليل الطويل"</h4>
+                        <span class="status-badge status-review">في انتظار الرد</span>
+                    </div>
+                    <p>تم إبداء الاهتمام، في انتظار رد الوكالة الأدبية</p>
+                    <button class="btn-secondary" onclick="viewWorkDetails(1)">عرض التفاصيل</button>
+                </div>
+            </div>
+
+            <!-- Negotiating Section -->
+            <div id="negotiating-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الخريف الأخير"</h4>
+                        <span class="status-badge status-review">قيد التفاوض</span>
+                    </div>
+                    <p><strong>الوكالة:</strong> المشهد الأول</p>
+                    <p><strong>حالة التفاوض:</strong> جاري مناقشة الشروط</p>
+                    <button class="btn-primary" onclick="viewNegotiation(1)">متابعة التفاوض</button>
+                </div>
+            </div>
+
+            <!-- Contracted Section -->
+            <div id="contracted-section" class="dashboard-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">رواية "الضوء والظل"</h4>
+                        <span class="status-badge status-published">تم النشر</span>
+                    </div>
+                    <p><strong>تاريخ النشر:</strong> ٢٠٢٤/٠٣/١٥</p>
+                    <p><strong>حالة المبيعات:</strong> جيدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Details Modal -->
+    <div id="workDetailsModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 900px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>تفاصيل العمل</h2>
+            <div class="card" style="box-shadow: none; padding: 0;">
+                <h3>رواية "الليل الطويل"</h3>
+                <p><strong>الكاتب:</strong> محمد أحمد</p>
+                <p><strong>الوكالة:</strong> المشهد الأول</p>
+                <p><strong>الوصف:</strong> رواية اجتماعية تتناول...</p>
+                <h4 style="margin-top: 1.5rem;">البيانات التسويقية</h4>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>المقياس</th>
+                            <th>القيمة</th>
+                        </tr>
+                        <tr>
+                            <td>عدد القراء المراجعين</td>
+                            <td>١٥</td>
+                        </tr>
+                        <tr>
+                            <td>التقييم المتوسط</td>
+                            <td>٧.٥/١٠</td>
+                        </tr>
+                        <tr>
+                            <td>الفئة العمرية المهتمة</td>
+                            <td>٢٥-٤٠ سنة</td>
+                        </tr>
+                        <tr>
+                            <td>الأعمال المشابهة</td>
+                            <td>رواية "المدينة"، "الليل الطويل"</td>
+                        </tr>
+                    </table>
+                </div>
+                <h4 style="margin-top: 1.5rem;">الانطباعات المبدئية</h4>
+                <div class="review-item">
+                    <p>مراجعة من قارئ: "عمل قوي في البنية السردية..."</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <button class="btn-primary" onclick="hideWorkDetailsModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.dashboard-section').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(section + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        function showInterest(id) {
+            if (confirm('هل تريد إبداء الاهتمام بهذا العمل؟ سيتم إرسال طلب إلى الوكالة الأدبية.')) {
+                alert('تم إرسال طلب الاهتمام بنجاح');
+            }
+        }
+
+        function viewWorkDetails(id) {
+            document.getElementById('workDetailsModal').style.display = 'flex';
+        }
+
+        function hideWorkDetailsModal() {
+            document.getElementById('workDetailsModal').style.display = 'none';
+        }
+
+        function viewImpressions(id) {
+            alert('عرض الانطباعات المبدئية للعمل ' + id);
+        }
+
+        function viewNegotiation(id) {
+            alert('فتح صفحة التفاوض للعمل ' + id);
+        }
+    </script>
+</body>
+</html>

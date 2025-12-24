@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة قصصية " قطط الرياض الشاردة" - المشهد الأول</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>المشهد الأول</h1>
+                    <p class="tagline">نجعل من الكتابة مهنةً أقل وحدة</p>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="btn-secondary">الرئيسية</a>
+                <a href="login.html" class="btn-secondary">تسجيل الخروج</a>
+            </div>
+        </div>
+    </nav> -->
+    
+    <header class="site-header">
+        <div class="container">
+          <nav class="nav">
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="login.html">تسجيل الدخول</a>
+            </div>
+            
+            <div class="nav-center">
+              <Link to="/" class="site-logo">
+                <img src="images/logo.png" alt="المشهد الأول" class="logo"/>
+              </Link>
+            </div>
+            
+            <div class="nav-search hidden">
+              <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input 
+                  type="search" 
+                  placeholder="بحث..." 
+                  class="search-input"
+                  aria-label="البحث في الموقع"
+                />
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+    <section class="book-page">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span> / </span>
+                <a href="index.html#books">أعمال متاحة</a>
+                <span> / </span>
+                <span>مجموعة قصصية " قطط الرياض الشاردة"</span>
+            </div>
+
+            <!-- Book Header -->
+            <div class="book-header">
+                <div class="book-cover-large">
+                    <div class="book-cover-image">
+                        <div class="book-placeholder-large">📖</div>
+                    </div>
+                </div>
+                <div class="book-header-info">
+                    <h1 class="book-page-title">مجموعة قصصية " قطط الرياض الشاردة"</h1>
+                    <p class="book-page-author">بقلم: <a href="#" class="author-link">علي الوسمي</a></p>
+                    <div class="book-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">التقييم</span>
+                            <span class="stat-value">⭐ ٧.٥/١٠</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">عدد المراجعات</span>
+                            <span class="stat-value">١٥</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">عدد الصفحات</span>
+                            <span class="stat-value">٢٥٠</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">النوع</span>
+                            <span class="stat-value">مجموعة قصصية</span>
+                        </div>
+                    </div>
+                    <div class="book-actions">
+                        <button class="btn-primary" onclick="requestAccess()">طلب الإذن بالقراءة</button>
+                        <button class="btn-secondary" onclick="scrollToReviews()">عرض المراجعات</button>
+                    </div>
+                    <div class="book-description-full">
+                        <h3>عن العمل</h3>
+                        <p>
+                            <strong>مجموعة قصصية ساخرة على كلّ منها يُروى على لسان قطّ يعيش في حيّ من أحياء الرياض، توثّق الرواية الفروقات الاجتماعية والاقتصادية على مستوى الأحياء</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Content Tabs -->
+            <div class="book-tabs">
+                <button class="tab-btn active" onclick="showTab('digital')">النسخة الرقمية</button>
+                <button class="tab-btn" onclick="showTab('reviews')">مراجعات القراء</button>
+                <button class="tab-btn" onclick="showTab('details')">تفاصيل إضافية</button>
+            </div>
+
+            <!-- Digital Version Tab -->
+            <div id="digital-tab" class="tab-content active">
+                <div class="book-reader">
+                    <div class="reader-controls">
+                        <button class="reader-btn" onclick="changeFontSize('decrease')">أ-</button>
+                        <button class="reader-btn" onclick="changeFontSize('increase')">أ+</button>
+                        <button class="reader-btn" onclick="toggleNightMode()">🌙</button>
+                        <select class="reader-select" onchange="changeFontFamily(this.value)">
+                            <option value="Readex Pro">Readex Pro</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                        </select>
+                    </div>
+                    <div class="book-content" id="book-content">
+                        <div class="chapter">
+                            <h2>القصة الأولى</h2>
+                            <p>
+                                يراني بنو البشر فيظنّون أنّي إحدى قطط الشارع الشاردة ولم يعرفوا بأنّي ابنة سلالة عريقة اصطحبها كبار تجار الهند إلى فارس ومنها إلى بلاد الانجليز قبل الرحيل عبر البحر إلى جزيرة العرب.
+                            </p>
+                        </div>
+                        <div class="chapter">
+                            <h2>القصة الثانية</h2>
+                            <p>كنتُ أضعف مواليد أمّي فهمّت بأكلي لتوفير الحليب لبقية إخوتي، لكنّ طفلاً أنقذني وخبّأني أسفل سلالم العمارة الّتي يسكنها.</p>
+                        </div>
+                        <!-- More chapters would go here -->
+                    </div>
+                    <div class="reader-footer">
+                        <button class="btn-secondary" onclick="previousPage()">السابق</button>
+                        <span class="page-info">الصفحة ١ من ٢٥٠</span>
+                        <button class="btn-secondary" onclick="nextPage()">التالي</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div id="reviews-tab" class="tab-content">
+                <div class="reviews-section">
+                    <div class="reviews-header">
+                        <h2>مراجعات القراء</h2>
+                        <button class="btn-primary" onclick="showReviewForm()">كتابة مراجعة</button>
+                    </div>
+
+                    <div class="reviews-list">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">أ</div>
+                                    <div>
+                                        <h4>أحمد محمد</h4>
+                                        <span class="review-date">٢٠٢٦/٠٣/١٠</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐ ٨/١٠</div>
+                            </div>
+                            <div class="review-content">
+                                <p>لم أتوقع أن تؤثّر قصص على لسان القطط بي إلى هذا الحد!</p>
+                                <div class="review-tags">
+                                    <span class="tag">بنية سردية قوية</span>
+                                    <span class="tag">شخصيات مميزة</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">ف</div>
+                                    <div>
+                                        <h4>فاطمة عبدحق</h4>
+                                        <span class="review-date">٢٠٢٦/٠٣/٠٨</span>
+                                    </div>
+                                </div>
+                                <div class="review-rating">⭐ ١٠/١٠</div>
+                            </div>
+                            <div class="review-content">
+                                <p>هذه المجموعة القصصية ستغيّر رؤيتي لقطط الرياض إلى الأبد</p>
+                                <div class="review-tags">
+                                    <span class="tag">مؤثرة</span>
+                                    <span class="tag">لغة جميلة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Details Tab -->
+            <div id="details-tab" class="tab-content">
+                <div class="book-details-grid">
+                    <div class="detail-card">
+                        <h3>معلومات النشر</h3>
+                        <ul class="details-list">
+                            <li><strong>الحالة:</strong> قابل للنشر</li>
+                            <li><strong>الوكالة الأدبية:</strong> المشهد الأول</li>
+                            <li><strong>تاريخ الرفع:</strong> ٢٠٢٤/٠٢/١٥</li>
+                            <li><strong>آخر تحديث:</strong> ٢٠٢٤/٠٣/١٠</li>
+                        </ul>
+                    </div>
+                    <div class="detail-card">
+                        <h3>الإحصائيات</h3>
+                        <ul class="details-list">
+                            <li><strong>عدد القراء:</strong> ٢٣</li>
+                            <li><strong>عدد المراجعات:</strong> ١٥</li>
+                            <li><strong>التقييم المتوسط:</strong> ٧.٥/١٠</li>
+                            <li><strong>الفئة العمرية المهتمة:</strong> ٢٥-٤٠ سنة</li>
+                        </ul>
+                    </div>
+                    <div class="detail-card">
+                        <h3>الأعمال المشابهة</h3>
+                        <ul class="details-list">
+                            <li><a href="#">مجموعة قصصية "المدينة" - علي حسن</a></li>
+                            <li><a href="#">رواية "النهار القصير" - سارة أحمد</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Form Modal -->
+    <div id="reviewModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="form-container" style="max-width: 700px; margin: 2rem; max-height: 90vh; overflow-y: auto;">
+            <h2>كتابة مراجعة</h2>
+            <form data-form-type="book-review">
+                <div class="rating-input">
+                    <label>التقييم:</label>
+                    <input type="number" name="rating" min="1" max="10" value="7" required>
+                    <span>/ ١٠</span>
+                </div>
+                <div class="form-group">
+                    <label>المراجعة</label>
+                    <textarea name="review" rows="8" required placeholder="اكتب مراجعتك هنا..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>الكلمات المفتاحية (اختياري)</label>
+                    <input type="text" name="tags" placeholder="مثال: بنية سردية قوية، شخصيات متطورة">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn-primary" style="flex: 1;">إرسال المراجعة</button>
+                    <button type="button" class="btn-secondary" onclick="hideReviewForm()" style="flex: 1;">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; ٢٠٢٤ المشهد الأول - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/book.js"></script>
+</body>
+</html>
+
